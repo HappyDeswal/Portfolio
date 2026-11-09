@@ -54,7 +54,7 @@ p, li { color: var(--muted); }
 .portrait { display: grid; justify-items: center; gap: 1.15rem; }
 .portrait img { display: block; width: clamp(190px, 25vw, 294px); height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 5px solid var(--surface); box-shadow: 0 18px 50px #302d4b22; }
 figcaption { padding: .45rem .9rem; border-radius: 2rem; border: 1px solid var(--line); background: var(--surface); color: var(--accent); text-align: center; letter-spacing: .025em; }
-.stats { display: grid; grid-template-columns: repeat(3,1fr); border-block: 1px solid var(--line); }
+.stats { display: grid; grid-template-columns: repeat(2,1fr); border-block: 1px solid var(--line); }
 .stats div { padding: 1.3rem clamp(.5rem, 2.5vw, 2rem); }
 .stats div + div { border-left: 1px solid var(--line); }
 .stats strong, .case-stat strong { font-family: var(--display); display: block; color: var(--accent); font-size: clamp(1.8rem, 5vw, 3.5rem); line-height: 1.1; letter-spacing: -.06em; }
