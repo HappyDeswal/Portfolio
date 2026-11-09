@@ -19,8 +19,8 @@
     // Keep the default theme when storage is unavailable.
   }
 </script>
-<link rel="stylesheet" href="../../assets/site.css?v=4">
-<script src="../../assets/site.js?v=6" defer></script>
+<link rel="stylesheet" href="../../assets/site.css?v=5">
+<script src="../../assets/site.js?v=7" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -28,7 +28,13 @@
 <main class="wrap" id="main" tabindex="-1">
 
 <section class="page-intro case"><a class="text-link" href="../">← All projects</a><p class="eyebrow">CASE STUDY 03 / WEB</p><h1>Study OS</h1><p class="intro">JavaScript · CSS · IndexedDB</p></section>
-<div class="case-layout"><div><div class="art art-03" aria-hidden="true"><div class="art-label"><span>FIG. 03</span><span>• • •</span></div><div class="timer">25:00 <span>FOCUS SESSION</span></div></div><p class="caption">Project illustration</p><div class="case-stat"><strong>Offline</strong><span>notes, reading and focus tools</span></div></div>
+<div class="case-layout"><div><div class="art art-03" aria-hidden="true"><div class="art-label"><span>FIG. 03</span><span>• • •</span></div><div class="timer"><b data-timer-display>25:00</b> <span>FOCUS SESSION</span></div></div><p class="caption">25-minute focus timer preview</p>
+<div class="actions timer-controls" data-timer hidden>
+<button type="button" class="button primary" data-timer-toggle>Start timer</button>
+<button type="button" class="button" data-timer-reset>Reset</button>
+<output role="timer" class="timer-readable" aria-label="Time remaining" aria-live="off">25:00</output>
+<p role="status" data-timer-status></p>
+</div><div class="case-stat"><strong>Offline</strong><span>notes, reading and focus tools</span></div></div>
 <div class="case-copy"><section><h2>The problem</h2><p>Study workflows often require separate tools for reading, note-taking and time management.</p></section><section><h2>What I built</h2><p>I built a single-page app with Markdown notes, a Pomodoro timer, text-to-speech, animated themes, cloud sync and an IndexedDB fallback.</p></section><section><h2>The result</h2><p>Core tools can run offline. Notes can be exported as Markdown or ZIP files without a server.</p></section></div></div>
 <section class="callout"><div><p class="eyebrow">NEXT CASE STUDY</p><h2>AI Conversational Chatbot</h2></div><a class="button" href="../chatbot/">Read case study ↗</a></section>
 </main>

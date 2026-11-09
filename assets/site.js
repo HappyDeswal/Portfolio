@@ -189,3 +189,76 @@ if (counters.length && 'IntersectionObserver' in window && motionPreference.matc
   }, { threshold: 0.5 });
   for (const counter of counters) observer.observe(counter);
 }
+
+if ('IntersectionObserver' in window && motionPreference.matches) {
+  const illustrations = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      entry.target.classList.add('art-visible');
+      illustrations.unobserve(entry.target);
+    }
+  }, { threshold: 0.25 });
+  for (const art of document.querySelectorAll('.art')) illustrations.observe(art);
+}
+
+const timerControls = document.querySelector('[data-timer]');
+if (timerControls) {
+  const duration = 25 * 60 * 1000;
+  const display = document.querySelector('[data-timer-display]');
+  const readable = timerControls.querySelector('[role="timer"]');
+  const toggle = timerControls.querySelector('[data-timer-toggle]');
+  const status = timerControls.querySelector('[data-timer-status]');
+  let remaining = duration;
+  let deadline = 0;
+  let interval;
+
+  function renderTime() {
+    const seconds = Math.ceil(remaining / 1000);
+    const time = Math.floor(seconds / 60) + ':' + String(seconds % 60).padStart(2, '0');
+    display.textContent = time;
+    readable.textContent = time;
+  }
+
+  function stop() {
+    clearInterval(interval);
+    interval = undefined;
+    display.parentElement.classList.remove('is-running');
+  }
+
+  function tick() {
+    remaining = Math.max(0, deadline - Date.now());
+    renderTime();
+    if (remaining === 0) {
+      stop();
+      toggle.textContent = 'Start timer';
+      status.textContent = 'Focus session complete.';
+    }
+  }
+
+  toggle.addEventListener('click', () => {
+    if (interval !== undefined) {
+      tick();
+      if (remaining === 0) return;
+      stop();
+      toggle.textContent = 'Resume timer';
+      status.textContent = 'Timer paused.';
+      return;
+    }
+    if (remaining === 0) remaining = duration;
+    deadline = Date.now() + remaining;
+    interval = setInterval(tick, 250);
+    toggle.textContent = 'Pause timer';
+    status.textContent = 'Timer running.';
+    display.parentElement.classList.add('is-running');
+    renderTime();
+  });
+
+  timerControls.querySelector('[data-timer-reset]').addEventListener('click', () => {
+    stop();
+    remaining = duration;
+    toggle.textContent = 'Start timer';
+    status.textContent = 'Timer reset.';
+    renderTime();
+  });
+  timerControls.hidden = false;
+}
