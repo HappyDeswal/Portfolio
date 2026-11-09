@@ -19,25 +19,39 @@
     // Keep the default theme when storage is unavailable.
   }
 </script>
-<link rel="stylesheet" href="../assets/site.css?v=5">
-<script src="../assets/site.js?v=7" defer></script>
+<link rel="stylesheet" href="../assets/site.css?v=6">
+<script src="../assets/site.js?v=8" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="header"><div class="wrap bar"><a class="brand" href="../">Prikshit<span class="brand-period">.</span></a><nav id="primary-nav" aria-label="Main navigation"><a href="../">Home</a><a href="../about/">About</a><a href="../work/">Projects</a><a href="../skills/">Skills</a><a href="../experience/">Experience</a><a href="../achievements/">Achievements</a><a href="./" aria-current="page">Contact</a></nav><button class="theme-toggle" type="button" aria-pressed="false" hidden>Dark mode</button><button type="button" class="menu-toggle" aria-controls="primary-nav" aria-expanded="false" hidden>Menu</button></div><div class="reading-progress" aria-hidden="true"></div></header>
 <main class="wrap" id="main" tabindex="-1">
 
-<section class="page-intro"><p class="eyebrow">03 / CONTACT</p><h1>Let’s <em>talk.</em></h1><p class="intro">I’m interested in entry-level roles in web development and data science. Reach out if you’d like to discuss an opening or a project.</p></section>
-<section class="section split"><div><p class="eyebrow">DIRECT CONTACT</p><h2>Get in touch</h2></div><div class="panel"><h3>Email</h3><p><a class="text-link" href="mailto:prikshitkaswan@gmail.com">prikshitkaswan@gmail.com</a></p><div class="actions"><a class="button primary" href="mailto:prikshitkaswan@gmail.com">Open email ↗</a><button class="button" data-copy="prikshitkaswan@gmail.com" hidden>Copy email</button></div><p class="copy-status" role="status"></p><div class="actions"><a class="text-link" href="https://linkedin.com/in/prikshitkaswan">LinkedIn ↗</a><a class="text-link" href="https://github.com/prikshit1929">GitHub ↗</a></div></div></section>
-<section class="section split"><div><p class="eyebrow">WRITE A MESSAGE</p><h2>Tell me what you have in mind</h2></div>
+<section class="contact-layout" aria-label="Contact">
+<div class="contact-details" data-reveal>
+<p class="eyebrow">03 / CONTACT</p>
+<h1>Let’s <em>talk.</em></h1>
+<p class="intro">I’m interested in entry-level roles in web development and data science. Reach out about an opening, a project, or a collaboration.</p>
+<div class="contact-links">
+<a href="mailto:prikshitkaswan@gmail.com"><span class="contact-icon envelope" aria-hidden="true">✉</span><span><small>Email</small>prikshitkaswan@gmail.com</span></a>
+<a href="https://linkedin.com/in/prikshitkaswan"><span class="contact-icon" aria-hidden="true">in</span><span><small>LinkedIn</small>prikshitkaswan</span></a>
+<a href="https://github.com/prikshit1929"><span class="contact-icon" aria-hidden="true">&lt;/&gt;</span><span><small>GitHub</small>prikshit1929</span></a>
+</div>
+<button class="button" data-copy="prikshitkaswan@gmail.com" hidden>Copy email</button>
+<p class="copy-status" role="status"></p>
+</div>
 <form class="panel message-form" action="https://formspree.io/f/mqppvenv" method="post" data-message>
-<label>Your name <input name="name" autocomplete="name" required></label>
-<label>Your email <input name="email" type="email" autocomplete="email" required></label>
-<label>Subject <select name="subject"><option>Job opportunity</option><option>Project inquiry</option><option>General inquiry</option></select></label>
-<label>Message <textarea name="message" rows="5" required></textarea></label>
+<h2>Send a message</h2>
+<div class="contact-fields">
+<label>Your name <input name="name" autocomplete="name" placeholder="Jane Doe" required></label>
+<label>Email address <input name="email" type="email" autocomplete="email" placeholder="jane@company.com" required></label>
+</div>
+<label>Subject <select name="subject"><option value="">Select a topic…</option><option>Job opportunity</option><option>Internship opportunity</option><option>Project inquiry</option><option>Collaboration</option><option>General inquiry</option></select></label>
+<label>Message <textarea name="message" rows="6" placeholder="Tell me about the opportunity or project…" required></textarea></label>
+<button class="button primary" type="submit">Send message <span aria-hidden="true">↗</span></button>
 <p role="status" class="message-status"></p>
-<button class="button primary" type="submit">Send message ↗</button>
-</form></section>
+</form>
+</section>
 </main>
 <footer class="wrap footer"><span>Prikshit Kaswan · Chennai, India</span><div><a href="https://github.com/prikshit1929">GitHub ↗</a><a href="https://linkedin.com/in/prikshitkaswan">LinkedIn ↗</a></div></footer>
 <button class="back-top" type="button" aria-label="Back to top" hidden>↑</button>
