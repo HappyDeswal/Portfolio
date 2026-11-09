@@ -382,3 +382,37 @@ figcaption { padding: .45rem .9rem; border-radius: 2rem; border: 1px solid var(-
 @media (prefers-reduced-motion: no-preference) {
   .hero-disciplines .hero-line:nth-child(3) > em { animation-delay: .26s, 0s; }
 }
+
+/* Portfolio page layouts */
+.page-intro .eyebrow, .contact-heading .eyebrow, .reference-grid .eyebrow {
+  color: var(--accent);
+  font-size: .75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+main .page-intro h1, main .contact-heading h1 {
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  letter-spacing: -.035em;
+  line-height: 1.15;
+}
+.page-intro .intro, .contact-description, .reference-about p { font-size: .97rem; line-height: 1.8; }
+.reference-about, .reference-grid, .reference-projects { display: grid; gap: 1.25rem; }
+.reference-about { grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: clamp(1.5rem, 6vw, 4rem); align-items: start; }
+.about-profile { text-align: center; }
+.about-profile img { width: 140px; height: 140px; object-fit: cover; border-radius: 50%; margin-bottom: 1rem; }
+.about-profile .button, .about-highlights { margin-top: 1.25rem; }
+.reference-about h2, .reference-grid h2 { font-size: clamp(1.25rem, 2.8vw, 2rem); margin-bottom: .65rem; }
+.about-highlights, .reference-projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.reference-projects .featured-work { grid-column: 1 / -1; }
+.skills-cards { grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+.achievement-cards { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+.achievement-cards .panel:first-child { background: var(--tint); border-color: var(--accent); }
+.reference-tags { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; padding: 0; }
+.reference-tags li { padding: .3rem .7rem; border-radius: 2rem; background: var(--tint); color: var(--ink); font-size: .82rem; }
+.reference-timeline { border-left: 2px solid var(--line); padding-left: 1.5rem; margin-left: .5rem; }
+.reference-timeline article { position: relative; }
+.reference-timeline article::before { content: ""; position: absolute; left: calc(-1.5rem - 8px); top: 1.4rem; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
+@media (max-width: 740px) {
+  .reference-about, .about-highlights, .reference-projects { grid-template-columns: 1fr; }
+}
