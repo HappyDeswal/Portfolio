@@ -10,8 +10,17 @@
 <meta property="og:description" content="Return to the portfolio homepage.">
 <meta property="og:image" content="https://prikshit1929.github.io/Portfolio/assets/portrait.jpg">
 <link rel="icon" href="/Portfolio/assets/icon.svg" type="image/svg+xml">
+<script>
+  try {
+    if (localStorage.getItem('portfolio-theme') === 'dark') {
+      document.documentElement.dataset.theme = 'dark';
+    }
+  } catch {
+    // Keep the default theme when storage is unavailable.
+  }
+</script>
 <link rel="stylesheet" href="/Portfolio/assets/site.css?v=4">
-<script src="/Portfolio/assets/site.js?v=5" defer></script>
+<script src="/Portfolio/assets/site.js?v=6" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
