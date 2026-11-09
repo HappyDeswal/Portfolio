@@ -383,3 +383,5 @@ figcaption { padding: .45rem .9rem; border-radius: 2rem; border: 1px solid var(-
 @media (prefers-reduced-motion: no-preference) {
   .hero-disciplines .hero-line:nth-child(3) > em { animation-delay: .26s, 0s; }
 }
+
+.featured-grid { grid-template-columns: minmax(0, 38rem); }
