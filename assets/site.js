@@ -21,20 +21,6 @@ if (filters) {
   }
 }
 
-const copy = document.querySelector('[data-copy]');
-if (copy && navigator.clipboard) {
-  copy.hidden = false;
-  copy.addEventListener('click', async () => {
-    const status = document.querySelector('.copy-status');
-    try {
-      await navigator.clipboard.writeText(copy.dataset.copy);
-      status.textContent = 'Email address copied.';
-    } catch {
-      status.textContent = 'Copy unavailable. You can select the address above.';
-    }
-  });
-}
-
 if ('IntersectionObserver' in window && matchMedia('(prefers-reduced-motion: no-preference)').matches) {
   const observer = new IntersectionObserver(entries => {
     for (const entry of entries) {
