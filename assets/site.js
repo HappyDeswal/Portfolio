@@ -119,12 +119,28 @@ for (const card of document.querySelectorAll('[data-tilt], .project, .panel')) {
 
 const messageForm = document.querySelector('[data-message]');
 if (messageForm) {
-  messageForm.addEventListener('submit', event => {
+  const button = messageForm.querySelector('button[type="submit"]');
+  const status = messageForm.querySelector('[role="status"]');
+  messageForm.addEventListener('submit', async event => {
     event.preventDefault();
-    const fields = new FormData(messageForm);
-    const subject = encodeURIComponent(fields.get('subject'));
-    const body = encodeURIComponent(fields.get('message') + '\n\n' + fields.get('name') + '\n' + fields.get('email'));
-    location.href = messageForm.getAttribute('action') + '?subject=' + subject + '&body=' + body;
+    if (button.disabled) return;
+    button.disabled = true;
+    status.textContent = 'Sending…';
+
+    try {
+      const response = await fetch(messageForm.action, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(messageForm),
+      });
+      if (!response.ok) throw new Error('Form submission rejected');
+      messageForm.reset();
+      status.textContent = 'Message sent. Thank you!';
+    } catch {
+      status.textContent = 'Could not send your message. Please try again or use the email link above.';
+    } finally {
+      button.disabled = false;
+    }
   });
 }
 
