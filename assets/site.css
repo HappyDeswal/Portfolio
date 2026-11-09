@@ -133,13 +133,49 @@ figcaption { padding: .45rem .9rem; border-radius: 2rem; border: 1px solid var(-
 }
 
 .theme-toggle {
-  padding: .4rem .8rem;
-  min-height: 40px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  width: 66px;
+  height: 36px;
+  padding: 4px;
   border: 1px solid var(--line);
-  border-radius: 2rem;
-  color: var(--ink);
+  border-radius: 100px;
+  background: var(--tint);
+  color: var(--muted);
+  box-shadow: inset 0 2px 5px #0002;
+}
+.theme-toggle::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
   background: var(--surface);
-  font-size: .85rem;
+  box-shadow: 0 2px 6px #0003;
+}
+.theme-icon { position: relative; display: grid; place-items: center; width: 26px; height: 26px; }
+.theme-icon svg { width: 17px; height: 17px; }
+.theme-sun { color: #a66b12; }
+.theme-toggle[aria-pressed="true"]::before { transform: translateX(30px); background: #34466f; }
+.theme-toggle[aria-pressed="true"] .theme-sun { color: var(--muted); }
+.theme-toggle[aria-pressed="true"] .theme-moon { color: #e6edff; transform: rotate(-12deg); }
+.theme-toggle:hover { border-color: var(--accent); box-shadow: 0 0 0 3px var(--tint); }
+@media (prefers-reduced-motion: no-preference) {
+  .theme-toggle { transition: background .3s, border-color .3s, box-shadow .3s; }
+  .theme-toggle::before { transition: transform .35s cubic-bezier(.2,.8,.2,1), background .3s; }
+  .theme-icon { transition: color .3s, transform .35s; }
+  .theme-toggle:active::before { scale: .9; }
+}
+@media (max-width: 420px) {
+  .theme-toggle { width: 62px; height: 34px; }
+  .theme-toggle::before { width: 26px; height: 26px; }
+  .theme-icon { width: 24px; height: 24px; }
+  .theme-toggle[aria-pressed="true"]::before { transform: translateX(28px); }
 }
 .hero .eyebrow { text-transform: none; letter-spacing: .03em; font-size: .9rem; }
 .hero h1 em {
@@ -381,4 +417,38 @@ figcaption { padding: .45rem .9rem; border-radius: 2rem; border: 1px solid var(-
 .hero-disciplines h1 { font-size: clamp(2.35rem, 5.4vw, 5.4rem); }
 @media (prefers-reduced-motion: no-preference) {
   .hero-disciplines .hero-line:nth-child(3) > em { animation-delay: .26s, 0s; }
+}
+
+/* Portfolio page layouts */
+.page-intro .eyebrow, .contact-heading .eyebrow, .reference-grid .eyebrow {
+  color: var(--accent);
+  font-size: .75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+main .page-intro h1, main .contact-heading h1 {
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  letter-spacing: -.035em;
+  line-height: 1.15;
+}
+.page-intro .intro, .contact-description, .reference-about p { font-size: .97rem; line-height: 1.8; }
+.reference-about, .reference-grid, .reference-projects { display: grid; gap: 1.25rem; }
+.reference-about { grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: clamp(1.5rem, 6vw, 4rem); align-items: start; }
+.about-profile { text-align: center; }
+.about-profile img { width: 140px; height: 140px; object-fit: cover; border-radius: 50%; margin-bottom: 1rem; }
+.about-profile .button, .about-highlights { margin-top: 1.25rem; }
+.reference-about h2, .reference-grid h2 { font-size: clamp(1.25rem, 2.8vw, 2rem); margin-bottom: .65rem; }
+.about-highlights, .reference-projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.reference-projects .featured-work { grid-column: 1 / -1; }
+.skills-cards { grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+.achievement-cards { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+.achievement-cards .panel:first-child { background: var(--tint); border-color: var(--accent); }
+.reference-tags { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; padding: 0; }
+.reference-tags li { padding: .3rem .7rem; border-radius: 2rem; background: var(--tint); color: var(--ink); font-size: .82rem; }
+.reference-timeline { border-left: 2px solid var(--line); padding-left: 1.5rem; margin-left: .5rem; }
+.reference-timeline article { position: relative; }
+.reference-timeline article::before { content: ""; position: absolute; left: calc(-1.5rem - 8px); top: 1.4rem; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
+@media (max-width: 740px) {
+  .reference-about, .about-highlights, .reference-projects { grid-template-columns: 1fr; }
 }
