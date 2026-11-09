@@ -29,7 +29,6 @@ main:focus { outline: none; }
 .bar, .footer, .section-head, .callout { display: flex; justify-content: space-between; align-items: center; gap: 1.25rem; }
 .bar { min-height: 74px; flex-wrap: wrap; padding-block: .6rem; }
 .brand { display: inline-flex; align-items: center; font: 650 1.6rem var(--display); text-decoration: none; }
-.brand .brand-period { color: var(--accent); }
 nav, .footer div { display: flex; gap: clamp(.85rem, 3vw, 2rem); }
 nav a, .footer a { color: var(--muted); font-size: .9rem; text-decoration: none; }
 nav a[aria-current], nav a:hover, .footer a:hover, .text-link { color: var(--accent); }
