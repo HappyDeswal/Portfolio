@@ -53,19 +53,12 @@ if ('IntersectionObserver' in window && matchMedia('(prefers-reduced-motion: no-
 const theme = document.querySelector('.theme-toggle');
 if (theme) {
   const root = document.documentElement;
-  let savedTheme;
-  try {
-    savedTheme = localStorage.getItem('portfolio-theme');
-  } catch {
-    // The toggle still works for this page when storage is unavailable.
-  }
-
   function applyTheme(value) {
     root.dataset.theme = value;
     theme.setAttribute('aria-pressed', String(value === 'dark'));
   }
 
-  applyTheme(savedTheme === 'dark' ? 'dark' : 'light');
+  applyTheme(root.dataset.theme === 'dark' ? 'dark' : 'light');
   theme.hidden = false;
   theme.addEventListener('click', () => {
     const value = root.dataset.theme === 'dark' ? 'light' : 'dark';
@@ -126,19 +119,25 @@ if (messageForm) {
     if (button.disabled) return;
     button.disabled = true;
     status.textContent = 'Sending…';
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000);
 
     try {
       const response = await fetch(messageForm.action, {
         method: 'POST',
         headers: { Accept: 'application/json' },
         body: new FormData(messageForm),
+        signal: controller.signal,
       });
       if (!response.ok) throw new Error('Form submission rejected');
       messageForm.reset();
       status.textContent = 'Message sent. Thank you!';
     } catch {
-      status.textContent = 'Could not send your message. Please try again or use the email link above.';
+      status.textContent = controller.signal.aborted
+        ? 'The request timed out. Delivery could not be confirmed. You can use the email link above.'
+        : 'Could not send your message. Please try again or use the email link above.';
     } finally {
+      clearTimeout(timeout);
       button.disabled = false;
     }
   });
